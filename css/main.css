@@ -1,0 +1,364 @@
+/* #region Global */
+
+:root {
+    --main-color: yellow;
+    --dark-color: rgb(31, 31, 31);
+    --light-color: #fff
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Azeret Mono', monospace;
+    color: var(--light-color);
+}
+
+body {
+    background-color: var(--dark-color);
+}
+
+a {
+    transition: .3s linear;
+    -webkit-transition: .3s linear;
+    -moz-transition: .3s linear;
+    -ms-transition: .3s linear;
+    -o-transition: .3s linear;
+}
+
+a:hover {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+.container {
+    width: 99%;
+    max-width: 1200px;
+    min-width: 280px;
+    margin: 0 auto
+}
+
+.btn-reg {
+    padding: 4px 8px;
+    border: 2px solid var(--dark-color);
+    background-color: transparent;
+    margin: 0 3px;
+    color: var(--dark-color);
+    transition: .3s linear;
+    -webkit-transition: .3s linear;
+    -moz-transition: .3s linear;
+    -ms-transition: .3s linear;
+    -o-transition: .3s linear;
+    border-radius: 5px;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin: 2px;
+}
+
+.btn-reg.del:hover {
+    background-color: rgba(255, 0, 0, 0.863);
+}
+
+.btn-reg.add:hover {
+    background-color: rgba(46, 255, 46, 0.774);
+}
+
+.btn-reg.edit:hover {
+    background-color: rgb(255, 166, 0);
+}
+
+.btn-reg:hover {
+    border-color: transparent;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+
+/* #endregion Global */
+
+
+/* #region Header */
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 0;
+    text-align: center;
+}
+
+
+/* #endregion Header */
+
+
+/* #region Body */
+
+.body {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    background-color: var(--main-color);
+    padding: 30px;
+    margin: 20px auto;
+    color: var(--dark-color);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.192);
+}
+
+.body .input-data,
+.search-box .input-data {
+    background-color: var(--dark-color);
+    padding: 10px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.body .input-data .searchBtn {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 8px 7px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    min-width: 10%;
+}
+
+.body .input-data .searchBtn.btn-reg {
+    background-color: var(--light-color);
+}
+
+.body .input-data .searchBtn.btn-reg:hover {
+    background-color: var(--main-color);
+    border-color: var(--light-color);
+}
+
+.body .input-data .searchBtn img {
+    width: 30px;
+}
+
+.body .input-data .custom-input,
+.search-box .input-data .custom-input {
+    position: relative;
+    width: 90%;
+}
+
+.body .input-data #newItem,
+.search-box .input-data .custom-input input {
+    width: 100%;
+    font-size: 16px;
+    padding: 20px 50px 8px 8px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    background-color: var(--light-color);
+    border: none;
+    outline: none;
+    color: var(--dark-color);
+}
+
+.body .input-data label,
+.search-box .input-data .custom-input label {
+    color: var(--dark-color);
+    position: absolute;
+    top: 4px;
+    left: 5px;
+    font-size: 14px;
+    color: var(--dark-color);
+    transition: .3s linear;
+    -webkit-transition: .3s linear;
+    -moz-transition: .3s linear;
+    -ms-transition: .3s linear;
+    -o-transition: .3s linear;
+}
+
+.body .input-data #newItem:focus+label,
+.search-box .input-data .custom-input input:focus+label {
+    font-size: 12px;
+}
+
+.body .input-data .custom-input .btn-reg {
+    position: absolute;
+    right: 2px;
+    border-width: 1px;
+    font-weight: bold;
+    padding: 12px 8px;
+    top: 48%;
+    background-color: var(--light-color);
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    z-index: 100;
+}
+
+.body .input-data .custom-input .btn-reg:hover {
+    background-color: rgba(10, 255, 10, 0.74);
+}
+
+.body .output-data,
+.search-box .output-data {
+    background-color: var(--dark-color);
+    padding: 10px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+.body .output-data .box,
+.search-box .output-data .box {
+    background-color: var(--light-color);
+    padding: 10px 5px;
+    display: flex;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    position: relative;
+    margin: 5px auto;
+    justify-content: space-between;
+}
+
+.body .output-data .box.empty {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.body .output-data .box.empty.active {
+    display: flex;
+}
+
+.body .output-data .box .text,
+.search-box .output-data .text {
+    color: var(--dark-color);
+}
+
+.body .output-data .box .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.body .output-data .box button {
+    float: right;
+    max-height: 40px;
+}
+
+@media(max-width: 500px) {
+    .body .output-data .box .actions {
+        flex-direction: column;
+        justify-content: center;
+        align-items: unset;
+    }
+    .body {
+        padding: 10px 3px;
+    }
+}
+
+
+/* #endregion Body */
+
+
+/* #region Search Box */
+
+.search-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.801);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: -1;
+    transition: opacity .2s linear;
+    -webkit-transition: opacity .2s linear;
+    -moz-transition: opacity .2s linear;
+    -ms-transition: opacity .2s linear;
+    -o-transition: opacity .2s linear;
+    opacity: 0;
+}
+
+.search-box.active {
+    opacity: 1;
+    z-index: 1000;
+}
+
+
+/* Note: some Styles for .input-data & .custom-input & .output-data & .box & .text are Grouped With .body .inputData selector above */
+
+.search-box .output-data,
+.search-box .input-data {
+    width: 100%;
+    max-width: 800px;
+    min-width: 250px;
+    margin: 2px auto;
+}
+
+.search-box .input-data .custom-input {
+    width: 100%;
+}
+
+.search-box .closer {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: var(--light-color);
+    font-size: 80px;
+    font-weight: 100;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    cursor: pointer;
+    transition: .3s linear;
+    -webkit-transition: .3s linear;
+    -moz-transition: .3s linear;
+    -ms-transition: .3s linear;
+    -o-transition: .3s linear;
+}
+
+.search-box .closer:hover {
+    color: var(--main-color);
+}
+
+
+/* #endregion Search Box */
+
+
+/* #region Footer */
+
+.container .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* #endregion Footer */

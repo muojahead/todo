@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="task-box">
+            <div class="header">
+                <h1>Task</h1>
+                <p>CRUD App using HTML, CSS and Javascript</p>
+            </div>
+            <div class="body">
+                <div class="input-data">
+                    <div class="custom-input">
+                        <input type="text" id="newItem" />
+                        <label for="newItem">What You are wanna do..?</label>
+                        <button class="btn-reg add" id="addItem">Add</button>
+                    </div>
+                    <div class="searchBtn btn-reg" id="searchEng">
+                        <img src="./imgs/search.svg" alt="search Icon" />
+                    </div>
+                </div>
+                <div class="output-data" id="outputData">
+                    <div class="box empty active">
+                        <p class="text">
+                            Please Add an Item From The Input above, Thank You.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <p>
+                    Developed By: <a href="https://webdesginer.me">Mohamed Mujahid</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="search-box" id="searchBox">
+        <div class="closer" id="closer">+</div>
+        <div class="input-data">
+            <div class="custom-input">
+                <input type="text" id="serachInput" />
+                <label for="serachInput">What You are Lokking For..?</label>
+            </div>
+        </div>
+        <div class="output-data" id="searchResults">
+            <div class="box">
+                <div class="text">Enter what You search about in the Input above</div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
