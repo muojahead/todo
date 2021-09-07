@@ -6,6 +6,7 @@ const searchBox = selectEle("searchBox");
 const searchBoxCloser = selectEle("closer");
 const searchInput = selectEle("serachInput");
 const searchResultsOutput = selectEle("searchResults");
+
 let dataList = [];
 
 //clear Input Field and Focus on it
@@ -210,19 +211,19 @@ function getSearchResults() {
     dataList.forEach((item) => {
         if (item.textMsg.toLowerCase().match(searchWord.toLowerCase())) {
             boxItemCreator(item.textMsg, item.id, searchResultsOutput);
-            outputData.innerHTML = "";
-
-            for (let i = 0; i < dataList.length; i++) {
-                boxItemCreator(dataList[i].textMsg, dataList[i].id, outputData);
-            }
+        }
+        if (searchWord == "") {
+            searchResults.innerHTML = `
+                <div class="box">
+                <div class="text" >Enter what You search about in the Input above</div>
+                </div>
+            `;
         }
     });
-    if (dataList.filter((text) => text.textMsg === searchWord)) {
-        return;
-    } else {
-        searchResultsOutput.innerHTML = `
-<div class="box">
-    <div class="text">Enter what You search about in the Input above</div>
-</div>`;
+
+    outputData.innerHTML = "";
+
+    for (let i = 0; i < dataList.length; i++) {
+        boxItemCreator(dataList[i].textMsg, dataList[i].id, outputData);
     }
 }
