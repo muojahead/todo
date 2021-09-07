@@ -23,7 +23,6 @@ a {
     -moz-transition: .3s linear;
     -ms-transition: .3s linear;
     -o-transition: .3s linear;
-    background-color: #fff !important;
     text-decoration: none;
 }
 
@@ -43,9 +42,9 @@ a:hover {
 .btn-reg {
     padding: 4px 8px;
     border: 2px solid var(--main-color);
-    background-color: transparent;
+    background-color: var(--main-color);
     margin: 0 3px;
-    color: var(--text-color);
+    color: var(--back-color);
     transition: .3s linear;
     -webkit-transition: .3s linear;
     -moz-transition: .3s linear;
@@ -61,9 +60,9 @@ a:hover {
 }
 
 .btn-reg:hover {
-    border-color: transparent;
-    background-color: var(--main-color);
-    color: #fff;
+    border-color: var(--main-color);
+    background-color: var(--back-color);
+    color: var(--main-color);
 }
 
 
@@ -204,10 +203,12 @@ a:hover {
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     z-index: 100;
+    color: var(--main-color);
 }
 
 .body .input-data .custom-input .btn-reg:hover {
     background-color: var(--main-color);
+    color: var(--back-color);
 }
 
 .body .output-data,
