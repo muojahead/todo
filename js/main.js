@@ -6,9 +6,10 @@ const searchBox = selectEle("searchBox");
 const searchBoxCloser = selectEle("closer");
 const searchInput = selectEle("serachInput");
 const searchResultsOutput = selectEle("searchResults");
+const itemsCount = selectEle("count");
+const delAllItems = selectEle("delAllItems");
 
 let dataList = [];
-
 //clear Input Field and Focus on it
 clearData();
 
@@ -16,7 +17,21 @@ clearData();
 function selectEle(id) {
     return document.getElementById(id);
 }
-
+delAllItems.onclick = () => {
+    const emptyDataList = [];
+    JSON.stringify(emptyDataList);
+    dataList = emptyDataList;
+    localStorage.setItem("dataList", dataList);
+    outputDataFunc();
+    if (dataList.length == 0) {
+        outputData.innerHTML = `                    
+        <div class="box empty active">
+            <p class="text">
+                Please Add an Item From The Input above, Thank You.
+            </p>
+        </div>`;
+    }
+};
 // Load Data From LocalStorage
 window.onload = () => {
     const jsonData = localStorage.getItem("dataList");
@@ -125,6 +140,7 @@ function outputDataFunc() {
     clearData();
 
     localStorageProcess();
+    itemsCount.innerText = dataList.length + " Items";
 }
 
 // Clearing Input Field
@@ -162,6 +178,7 @@ function deleteItem(id) {
     for (let i = 0; i < dataList.length; i++) {
         boxItemCreator(dataList[i].textMsg, dataList[i].id, outputData);
     }
+    itemsCount.innerText = dataList.length + " Items";
 }
 
 //  Eidt Item From Data List and Localstorage
