@@ -17,20 +17,7 @@ function selectEle(id) {
 
 // adding New Items
 addItem.onclick = outputDataFunc;
-// // window.onload = () => {
-// //     const newDataList = localStorage.getItem("dataList");
-// //     var result = [];
 
-// //     for (var i in newDataList) {
-// //         result.push(newDataList[i]);
-// //     }
-// //     console.log(result);
-// // };
-// // Save DataList In Local stroge
-// function addToLocalStorage() {
-//     const dataListFormated = JSON.stringify(Object.assign({}, dataList));
-//     localStorage.setItem("dataList", dataListFormated);
-// }
 // create Data Box Which data outputted in and Add To The DOM
 function boxItemCreator(text, id) {
     let box = document.createElement("div");
@@ -121,18 +108,17 @@ function editItem(id) {
     inputData.focus();
     searchInput.value = "";
 }
+
 // open and Close Search Box
 openSearchBtn.onclick = () => {
     searchInput.value = "";
-    if (dataList.length == 0) {
-        searchResultsOutput.innerHTML = `
-        <div class="box">
-        <div class="text">Enter what You search about in the Input above</div>
-    </div>
-            `;
-    }
+    searchResultsOutput.innerHTML = `
+    <div class="box">
+    <div class="text">Enter what You search about in the Input above</div>
+</div>
+        `;
     if (inputData.value !== "") {
-        alert("please Finsh adding Before Search or clear input");
+        alert("please Finish adding Before Search or clear input");
     } else if (dataList.length == 0) {
         alert("you Have no items to search in Please add One");
     } else {
@@ -146,20 +132,14 @@ function getSearchResults() {
     const searchWord = searchInput.value.trim();
     searchResultsOutput.innerHTML = "";
     for (let i = 0; i < dataList.length; i++) {
-        if (dataList[i].textMsg.toLowerCase().includes(searchWord.toLowerCase())) {
-            searchResultsOutput.innerHTML = `
+        if (dataList[i].textMsg.includes(searchWord)) {
+            searchResultsOutput.innerHTML += `
             <div class="box">
             <p class="text">${dataList[i].textMsg}</p>
             <div class="actions">
             <button class="btn-reg del" onclick="editItem(${dataList[i].id})">Edit</button>
                 <button class="btn-reg del" onclick="deleteItem(${dataList[i].id})">Delete</button>
             </div>
-        </div>
-                `;
-        } else if (searchWord == " ") {
-            searchResultsOutput.innerHTML = `
-            <div class="box">
-            <div class="text">Enter what You search about in the Input above</div>
         </div>
                 `;
         } else {
