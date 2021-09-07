@@ -1,9 +1,8 @@
 /* #region Global */
 
 :root {
-    --main-color: yellow;
-    --dark-color: rgb(31, 31, 31);
-    --light-color: #fff
+    --main-color: #FEC54C;
+    --back-color: rgb(224, 224, 224) --text-color: #fff
 }
 
 * {
@@ -11,11 +10,11 @@
     padding: 0;
     margin: 0;
     font-family: 'Azeret Mono', monospace;
-    color: var(--light-color);
+    color: var(--text-color);
 }
 
 body {
-    background-color: var(--dark-color);
+    background-color: var(--back-color);
 }
 
 a {
@@ -32,7 +31,7 @@ a:hover {
 }
 
 .container {
-    width: 99%;
+    width: 98%;
     max-width: 1200px;
     min-width: 280px;
     margin: 0 auto
@@ -40,10 +39,10 @@ a:hover {
 
 .btn-reg {
     padding: 4px 8px;
-    border: 2px solid var(--dark-color);
+    border: 2px solid var(--main-color);
     background-color: transparent;
     margin: 0 3px;
-    color: var(--dark-color);
+    color: var(--text-color);
     transition: .3s linear;
     -webkit-transition: .3s linear;
     -moz-transition: .3s linear;
@@ -58,22 +57,10 @@ a:hover {
     margin: 2px;
 }
 
-.btn-reg.del:hover {
-    background-color: rgba(255, 0, 0, 0.863);
-}
-
-.btn-reg.add:hover {
-    background-color: rgba(46, 255, 46, 0.774);
-}
-
-.btn-reg.edit:hover {
-    background-color: rgb(255, 166, 0);
-}
-
 .btn-reg:hover {
     border-color: transparent;
-    background-color: var(--dark-color);
-    color: var(--light-color);
+    background-color: var(--main-color);
+    color: var(--text-color);
 }
 
 
@@ -100,30 +87,31 @@ a:hover {
 .body {
     width: 100%;
     max-width: 800px;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    background-color: var(--main-color);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    background-color: var(--back-color);
     padding: 30px;
     margin: 20px auto;
-    color: var(--dark-color);
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.192);
+    color: var(--text-color);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.363);
 }
 
 .body .input-data,
 .search-box .input-data {
-    background-color: var(--dark-color);
+    background-color: var(--back-color);
     padding: 10px;
-    border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    -ms-border-radius: 15px;
-    -o-border-radius: 15px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
     margin: 20px 0;
     display: flex;
     align-items: center;
+    border: 2px solid var(--main-color);
 }
 
 .body .input-data .searchBtn {
@@ -131,21 +119,26 @@ a:hover {
     text-align: center;
     justify-content: center;
     padding: 8px 7px;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
     min-width: 10%;
+    transition: .3s linear;
+    -webkit-transition: .3s linear;
+    -moz-transition: .3s linear;
+    -ms-transition: .3s linear;
+    -o-transition: .3s linear;
 }
 
 .body .input-data .searchBtn.btn-reg {
-    background-color: var(--light-color);
+    background-color: var(--main-color);
 }
 
 .body .input-data .searchBtn.btn-reg:hover {
-    background-color: var(--main-color);
-    border-color: var(--light-color);
+    background-color: var(--back-color);
+    border-color: var(--main-color);
 }
 
 .body .input-data .searchBtn img {
@@ -162,26 +155,25 @@ a:hover {
 .search-box .input-data .custom-input input {
     width: 100%;
     font-size: 16px;
-    padding: 20px 50px 8px 8px;
+    padding: 20px 60px 8px 8px;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
-    background-color: var(--light-color);
+    background-color: var(--back-color);
     border: none;
     outline: none;
-    color: var(--dark-color);
+    color: var(--text-color);
 }
 
 .body .input-data label,
 .search-box .input-data .custom-input label {
-    color: var(--dark-color);
+    color: var(--text-color);
     position: absolute;
     top: 4px;
     left: 5px;
     font-size: 14px;
-    color: var(--dark-color);
     transition: .3s linear;
     -webkit-transition: .3s linear;
     -moz-transition: .3s linear;
@@ -196,12 +188,12 @@ a:hover {
 
 .body .input-data .custom-input .btn-reg {
     position: absolute;
-    right: 2px;
-    border-width: 1px;
+    right: 0px;
     font-weight: bold;
-    padding: 12px 8px;
-    top: 48%;
-    background-color: var(--light-color);
+    padding: 15px 9px;
+    top: 46%;
+    border-radius: 5px;
+    background-color: #fff;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
@@ -211,23 +203,23 @@ a:hover {
 }
 
 .body .input-data .custom-input .btn-reg:hover {
-    background-color: rgba(10, 255, 10, 0.74);
+    background-color: var(--main-color);
 }
 
 .body .output-data,
 .search-box .output-data {
-    background-color: var(--dark-color);
+    background-color: var(--back-color);
     padding: 10px;
-    border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    -ms-border-radius: 15px;
-    -o-border-radius: 15px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 
 .body .output-data .box,
 .search-box .output-data .box {
-    background-color: var(--light-color);
+    background-color: var(--back-color);
     padding: 10px 5px;
     display: flex;
     border-radius: 5px;
@@ -238,6 +230,7 @@ a:hover {
     position: relative;
     margin: 5px auto;
     justify-content: space-between;
+    border: 2px solid var(--main-color);
 }
 
 .body .output-data .box.empty {
@@ -253,7 +246,7 @@ a:hover {
 
 .body .output-data .box .text,
 .search-box .output-data .text {
-    color: var(--dark-color);
+    color: var(--text-color);
 }
 
 .body .output-data .box .actions {
@@ -290,7 +283,7 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.801);
+    background-color: rgba(0, 0, 0, 0.363);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -309,12 +302,32 @@ a:hover {
     z-index: 1000;
 }
 
+.search-box .contain {
+    padding: 30px;
+    width: 98%;
+    max-width: 800px;
+    min-width: 280px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.582);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+@media(max-width: 500px) {
+    .search-box .contain {
+        padding: 10px 5px;
+    }
+}
+
 
 /* Note: some Styles for .input-data & .custom-input & .output-data & .box & .text are Grouped With .body .inputData selector above */
 
 .search-box .output-data,
 .search-box .input-data {
-    width: 100%;
+    width: 98%;
     max-width: 800px;
     min-width: 250px;
     margin: 2px auto;
@@ -328,7 +341,7 @@ a:hover {
     position: absolute;
     top: 20px;
     left: 20px;
-    color: var(--light-color);
+    color: #fff;
     font-size: 80px;
     font-weight: 100;
     transform: rotate(45deg);

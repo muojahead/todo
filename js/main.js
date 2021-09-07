@@ -210,14 +210,19 @@ function getSearchResults() {
     dataList.forEach((item) => {
         if (item.textMsg.toLowerCase().match(searchWord.toLowerCase())) {
             boxItemCreator(item.textMsg, item.id, searchResultsOutput);
-        } else {
-            return;
+            outputData.innerHTML = "";
+
+            for (let i = 0; i < dataList.length; i++) {
+                boxItemCreator(dataList[i].textMsg, dataList[i].id, outputData);
+            }
         }
     });
-
-    outputData.innerHTML = "";
-
-    for (let i = 0; i < dataList.length; i++) {
-        boxItemCreator(dataList[i].textMsg, dataList[i].id, outputData);
+    if (dataList.filter((text) => text.textMsg === searchWord)) {
+        return;
+    } else {
+        searchResultsOutput.innerHTML = `
+<div class="box">
+    <div class="text">Enter what You search about in the Input above</div>
+</div>`;
     }
 }
