@@ -14,12 +14,24 @@ clearData();
 function selectEle(id) {
     return document.getElementById(id);
 }
-
+window.onload = () => {
+    const jsonData = localStorage.getItem("dataList");
+    const bacledData = JSON.parse(jsonData);
+    if (bacledData) {
+        dataList = bacledData;
+        outputDataFunc();
+    }
+};
+// add LocalStorage
+function localStorageProcess() {
+    const fromatedDataLis = JSON.stringify(dataList);
+    localStorage.setItem("dataList", fromatedDataLis);
+}
 // adding New Items
 addItem.onclick = outputDataFunc;
 
 // create Data Box Which data outputted in and Add To The DOM
-function boxItemCreator(text, id) {
+function boxItemCreator(text, id, ele) {
     let box = document.createElement("div");
     box.setAttribute("class", "box");
 
@@ -39,11 +51,11 @@ function boxItemCreator(text, id) {
     let actions = document.createElement("div");
     actions.setAttribute("class", "actions");
 
-    actions.appendChild(delButton);
     actions.appendChild(eidtButton);
+    actions.appendChild(delButton);
     box.appendChild(textEle);
     box.appendChild(actions);
-    outputData.appendChild(box);
+    ele.appendChild(box);
 }
 
 //Check the validity of the entered data and make sure that it does not exist before
@@ -53,6 +65,9 @@ function addAndChickDataItem(text) {
         textMsg: text,
     };
     const exist = dataList.find((item) => item.textMsg === text);
+    if (text == "") {
+        return;
+    }
     if (exist) {
         alert("Sorry, This Item Added Before!");
         clearData();
@@ -65,11 +80,14 @@ function addAndChickDataItem(text) {
 // Loop on Data Items and Outpuing Them To The DOM
 function outputDataFunc() {
     addAndChickDataItem(inputData.value.trim());
-    outputData.innerHTML = "";
+    if (dataList.length != 0) {
+        outputData.innerHTML = "";
+    }
     for (let i = 0; i < dataList.length; i++) {
-        boxItemCreator(dataList[i].textMsg, dataList[i].id);
+        boxItemCreator(dataList[i].textMsg, dataList[i].id, outputData);
     }
     clearData();
+    localStorageProcess();
 }
 
 // Clearing Input Field
@@ -78,9 +96,11 @@ function clearData() {
     inputData.focus();
 }
 
-//  Delete Items From Data List
+//  Delete Items From Data List and Localstorage
 function deleteItem(id) {
     const deletedItem = dataList.filter((item) => item.id !== id);
+    const JsondeletedItem = JSON.stringify(deletedItem);
+    localStorage.setItem("dataList", JsondeletedItem);
     dataList = deletedItem;
     if (dataList.length == 0) {
         outputData.innerHTML = `                    
@@ -95,11 +115,11 @@ function deleteItem(id) {
     searchInput.value = "";
     searchBox.classList.remove("active");
     for (let i = 0; i < dataList.length; i++) {
-        boxItemCreator(dataList[i].textMsg, dataList[i].id);
+        boxItemCreator(dataList[i].textMsg, dataList[i].id, outputData);
     }
 }
 
-//  Eidt Item From Data List
+//  Eidt Item From Data List and Localstorage
 function editItem(id) {
     const editedItem = dataList.find((item) => item.id === id);
     inputData.value = editedItem.textMsg;
@@ -126,33 +146,23 @@ openSearchBtn.onclick = () => {
     }
 };
 searchBoxCloser.onclick = () => searchBox.classList.remove("active");
+
+// search Results
 searchInput.onkeyup = getSearchResults;
 
 function getSearchResults() {
     const searchWord = searchInput.value.trim();
     searchResultsOutput.innerHTML = "";
-    for (let i = 0; i < dataList.length; i++) {
-        if (dataList[i].textMsg.includes(searchWord)) {
-            searchResultsOutput.innerHTML += `
-            <div class="box">
-            <p class="text">${dataList[i].textMsg}</p>
-            <div class="actions">
-            <button class="btn-reg del" onclick="editItem(${dataList[i].id})">Edit</button>
-                <button class="btn-reg del" onclick="deleteItem(${dataList[i].id})">Delete</button>
-            </div>
-        </div>
-                `;
+    dataList.forEach((item) => {
+        if (item.textMsg.toLowerCase().match(searchWord.toLowerCase())) {
+            boxItemCreator(item.textMsg, item.id, searchResultsOutput);
         } else {
-            searchResultsOutput.innerHTML = `
-            <div class="box">
-            <p class="text">No thing matching Your input text</p>
-        </div>
-                `;
+            return;
         }
-    }
+    });
     outputData.innerHTML = "";
 
     for (let i = 0; i < dataList.length; i++) {
-        boxItemCreator(dataList[i].textMsg, dataList[i].id);
+        boxItemCreator(dataList[i].textMsg, dataList[i].id, outputData);
     }
 }
